@@ -1,3 +1,42 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: sans-serif;
+}
+
+.img-mirror {
+  transform: scale(-1, 1);
+}
+
+.wrapper {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: image-url('cupid.svg');
+  background-size: 50px;
+  position: relative;
+  padding: 50px;
+
+  .inner-wrapper {
+    background-color: white;
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.content {
+  text-align: center;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+

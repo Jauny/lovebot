@@ -1,8 +1,16 @@
-<%= javascript_pack_tag 'index' %>
+<div class="wrapper">
+  <div class="inner-wrapper">
+    <div class="title">
+      <%= image_tag "cupid.svg", width: "100", class: 'img-mirror' %>
+      <h1>Welcome to Lovebot,<br/> the bot that spreads the love!</h1>
+      <%= image_tag "cupid.svg", width: "100" %>
+    </div>
 
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+    <div class="content">
+      <div>Lovebot is a real cupidbot. He'll automatically fav all tweets mentioning you, on your behalf. You'll spread love, doing nothing!</div>
+      <div><%= image_tag "kawaii.svg", width: '100' %></div>
 
-<div id="tweets" data="<%= @tweets.to_json %>"></div>
-
-<div id="welcome">{{ tweets }}</div>
+      <button>Spread the love!</button>
+    </div>
+  </div>
+</div>
