@@ -37,6 +37,17 @@ body {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+
+  .yay {
+    display: inline-block;
+    background-color: #ABEBC6;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .nay {
+    display: inline-block;
+    color: #ff9999;
+  }
 }
 
 button, input[type=submit] {
@@ -44,9 +55,15 @@ button, input[type=submit] {
   border: none;
   border-radius: 5px;
   height: 30px;
-  background-color: #ff9999;
-  box-shadow: 3px 3px #dd7373;
-  margin-bottom: 10px;
+  margin: 20px 0;
+  background-color: #ABEBC6;
+  box-shadow: 3px 3px #7DCEA0;
+
+  &.negative {
+    background-color: #ff9999;
+    box-shadow: 3px 3px #dd7373;
+    height: 20px;
+  }
 
   &:active {
     transform: translate(3px, 3px);

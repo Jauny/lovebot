@@ -19,20 +19,27 @@
 
       <% if !current_account %>
         <%= button_to "Login with Twitter", "/auth/twitter" %>
+
       <% elsif current_account.active %>
-        Yay! I'm working very hard finding your mentions and fav'ing them for you!
-        <%= button_to [current_account, :stop] do %>
+        <div class="yay">
+          Yay! I'm working very hard finding your mentions and fav'ing them for you!
+        </div>
+        <%= button_to [current_account, :stop], {class: 'negative'} do %>
           Stop fav'ing more mentions for <%= current_account.name %>
         <% end %>
+
       <% else %>
+        <div class="nay">
+          I'm paused right now :(<br/>
+          Activate me, and I'll fav your most recent mention and then will automatically fav when you receive mentions!
+        </div>
         <%= button_to [current_account, :spread_the_love] do %>
           Spread the love for <%= current_account.name %>
         <% end %>
-        I'll fav your most recent mention and then will automatically fav when you receive mentions!
       <% end %>
 
       <% if current_account %>
-        <%= button_to [current_account, :logout] do %>
+        <%= button_to [current_account, :logout], {class: 'negative'} do %>
           Logout
         <% end %>
       <% end %>
