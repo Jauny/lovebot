@@ -5,11 +5,11 @@ class Account < ApplicationRecord
   before_create :default_values
 
   def self.update_or_create_from_auth_hash(auth_hash)
-    account = Account.where(name: auth_hash.info.nickname).first_or_create
+    account = Account.where(name: auth_hash[:info][:nickname]).first_or_create
     account.update(
       active: true,
-      access_token: auth_hash.credentials.token,
-      access_token_secret: auth_hash.credentials.secret
+      access_token: auth_hash[:credentials][:token],
+      access_token_secret: auth_hash[:credentials][:secret]
     )
     account
   end

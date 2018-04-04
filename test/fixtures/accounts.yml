@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  access_token: MyString
-  access_token_secret: MyString
-  active: 
+  name: active
+  access_token: 1234
+  access_token_secret: 4321
+  active: true
 
 two:
-  name: MyString
-  access_token: MyString
-  access_token_secret: MyString
-  active: 
+  name: not_active
+  access_token: abcd
+  access_token_secret: dcba
+  active: false
