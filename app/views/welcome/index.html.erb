@@ -39,7 +39,7 @@
       <% end %>
 
       <% if current_account %>
-        <%= button_to [current_account, :logout], {class: 'negative'} do %>
+        <%= link_to :account_logout, class: 'negative', method: :post do %>
           Logout
         <% end %>
       <% end %>

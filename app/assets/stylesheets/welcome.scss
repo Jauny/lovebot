@@ -54,15 +54,20 @@ button, input[type=submit] {
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  height: 30px;
   margin: 20px 0;
   background-color: #ABEBC6;
   box-shadow: 3px 3px #7DCEA0;
+  height: 60px;
+  width: 100%;
+  max-width: 300px;
+  font-size: 1em;
 
   &.negative {
     background-color: #ff9999;
     box-shadow: 3px 3px #dd7373;
     height: 20px;
+    width: auto;
+    font-size: 0.7em;
   }
 
   &:active {
@@ -74,4 +79,10 @@ button, input[type=submit] {
   &:focus {
     outline: none;
   }
+}
+
+a.negative {
+  color: #ff9999;
+  margin: 20px 0;
+  display: inline-block;
 }
