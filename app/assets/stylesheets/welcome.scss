@@ -48,6 +48,13 @@ body {
     display: inline-block;
     color: #ff9999;
   }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    line-height: 30px;
+  }
 }
 
 button, input[type=submit] {
@@ -83,6 +90,5 @@ button, input[type=submit] {
 
 a.negative {
   color: #ff9999;
-  margin: 20px 0;
   display: inline-block;
 }

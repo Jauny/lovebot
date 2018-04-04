@@ -38,11 +38,18 @@
         <% end %>
       <% end %>
 
-      <% if current_account %>
-        <%= link_to :account_logout, class: 'negative', method: :post do %>
-          Logout
-        <% end %>
-      <% end %>
+      <div class="footer">
+        <div class="jauny">
+          Made with lots of 😍 by <a target="_blank" href="https://twitter.com/jauny/">@Jauny</a>
+        </div>
+        <div>
+          <% if current_account %>
+            <%= link_to :account_logout, class: 'negative', method: :post do %>
+              Logout
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
