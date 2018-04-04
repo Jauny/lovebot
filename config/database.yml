@@ -24,4 +24,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: thetwitterlovebot_production
+  username: thetwitterlovebot
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
