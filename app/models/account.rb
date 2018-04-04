@@ -46,5 +46,6 @@ class Account < ApplicationRecord
 
   def default_values
     self.active = true
+    self.last_loved = 1
   end
 end

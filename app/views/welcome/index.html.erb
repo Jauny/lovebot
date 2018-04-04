@@ -30,7 +30,7 @@
           <%= button_to [current_account, :stop] do %>
             Stop fav'ing more mentions for <%= current_account.name %>
           <% end %>
-        <% elsif current_account.last_loved > 1 %>
+        <% elsif current_account.last_loved == 1 or !current_account.active %>
           <%= button_to [current_account, :spread_the_love] do %>
             Spread the love for <%= current_account.name %>
           <% end %>
