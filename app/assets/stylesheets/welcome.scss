@@ -39,3 +39,22 @@ body {
   margin-right: auto;
 }
 
+button, input[type=submit] {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  background-color: #ff9999;
+  box-shadow: 3px 3px #dd7373;
+  margin-bottom: 10px;
+
+  &:active {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+    border: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
