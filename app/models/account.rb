@@ -18,7 +18,7 @@ class Account < ApplicationRecord
     logger.info(message: 'spreading the love', account: self.name)
 
     client = twitter_client
-    if client.blank?
+    if client.nil?
       logger.error(message: 'unable to get twitter client, check logs for error', account: self.name)
       return
     end
