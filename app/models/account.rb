@@ -17,26 +17,32 @@ class Account < ApplicationRecord
   def spread_the_love
     logger.info(message: 'spreading the love', account: self.name)
 
-    client = twitter_client
-    if client.nil?
-      logger.error(message: 'unable to get twitter client, check logs for error', account: self.name)
-      return
+    begin
+      client = twitter_client
+
+      since_id = self.last_loved || 1
+      mentions = client.mentions_timeline :count => 1, since_id: since_id
+      logger.info(message: 'got recent mentions', account: self.name, since_id: since_id, count: mentions.length)
+
+      if mentions.any?
+        logger.info(message: 'favoriting mentions', account: self.name)
+        client.favorite(mentions)
+
+        last_loved_id = mentions.first.id
+        logger.info(message: 'updating last_loved', account: self.name, last_loved: last_loved_id)
+        self.update last_loved: last_loved_id
+
+        logger.info(message: 'done spreading the love', account: self.name, count: mentions.length)
+      end
+    rescue Twitter::Error::Unauthorized
+      logger.error(message: 'Twitter::Error::Unauthorized happened', account: self.name)
+      deactivate!
     end
+  end
 
-    since_id = self.last_loved || 1
-    mentions = client.mentions_timeline :count => 1, since_id: since_id
-    logger.info(message: 'got recent mentions', account: self.name, since_id: since_id, count: mentions.length)
-
-    if mentions.any?
-      logger.info(message: 'favoriting mentions', account: self.name)
-      client.favorite(mentions)
-
-      last_loved_id = mentions.first.id
-      logger.info(message: 'updating last_loved', account: self.name, last_loved: last_loved_id)
-      self.update last_loved: last_loved_id
-
-      logger.info(message: 'done spreading the love', account: self.name, count: mentions.length)
-    end
+  def deactivate!
+    self.active = false
+    self.save
   end
 
   private
@@ -48,9 +54,6 @@ class Account < ApplicationRecord
         config.access_token        = self.access_token
         config.access_token_secret = self.access_token_secret
       end
-    rescue Twitter::Error::Unauthorized
-      logger.error(message: 'Twitter::Error::Unauthorized happened', account: self.name)
-      self.active = false
     rescue => e
       logger.error(message: 'Something went wront while getting Twitter client', error: e, account: self.name)
     end
