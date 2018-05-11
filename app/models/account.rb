@@ -47,12 +47,12 @@ class Account < ApplicationRecord
         config.consumer_secret     = Rails.application.secrets.twitter[:secret]
         config.access_token        = self.access_token
         config.access_token_secret = self.access_token_secret
-      rescue Twitter::Error::Unauthorized
-        logger.error(message: 'Twitter::Error::Unauthorized happened', account: self.name)
-        self.active = false
-      rescue => e
-        logger.error(message: 'Something went wront while getting Twitter client', error: e, account: self.name)
       end
+    rescue Twitter::Error::Unauthorized
+      logger.error(message: 'Twitter::Error::Unauthorized happened', account: self.name)
+      self.active = false
+    rescue => e
+      logger.error(message: 'Something went wront while getting Twitter client', error: e, account: self.name)
     end
   end
 
